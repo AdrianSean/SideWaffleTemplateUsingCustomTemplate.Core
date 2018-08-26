@@ -1,4 +1,5 @@
 ﻿using EnvDTE;
+using EnvDTE80;
 using Microsoft.VisualStudio.TemplateWizard;
 using System;
 using System.Collections.Generic;
@@ -12,6 +13,7 @@ namespace DemoTemplatePack
         private string customMessage;
 
         DTE _dte;
+        
 
         // This method is called before opening any item that   
         // has the OpenInEditor attribute.  
@@ -21,7 +23,15 @@ namespace DemoTemplatePack
 
         public void ProjectFinishedGenerating(Project project)
         {
+            Solution2 solution = (Solution2)_dte.Solution;
+            Project docFolder = solution.AddSolutionFolder("0. Documentation");
+            docFolder.Save();
+
+            Project msFolder = solution.AddSolutionFolder("1. Microservices");
+            Project testsFolder = solution.AddSolutionFolder("2. Tests");
+            Project caFolder = solution.AddSolutionFolder("3. Code Analysis");
         }
+
 
         // This method is only called for item templates,  
         // not for project templates.  
@@ -33,6 +43,7 @@ namespace DemoTemplatePack
         // This method is called after the project is created.  
         public void RunFinished()
         {
+            
         }
 
         public void RunStarted(object automationObject,
@@ -52,7 +63,8 @@ namespace DemoTemplatePack
                 customMessage = UserInputForm.CustomMessage;
 
                 // Add custom parameters.  
-                replacementsDictionary.Add("passthrough:userInput", customMessage);
+                replacementsDictionary.Add("passthrough:userInput", customMessage);                
+                
             }
             catch (Exception ex)
             {
