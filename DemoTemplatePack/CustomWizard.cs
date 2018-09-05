@@ -25,11 +25,14 @@ namespace DemoTemplatePack
         {
             Solution2 solution = (Solution2)_dte.Solution;
             Project docFolder = solution.AddSolutionFolder("0. Documentation");
-            docFolder.Save();
+            //docFolder.Save();
 
             Project msFolder = solution.AddSolutionFolder("1. Microservices");
+            //msFolder.Save();
             Project testsFolder = solution.AddSolutionFolder("2. Tests");
+            //testsFolder.Save();
             Project caFolder = solution.AddSolutionFolder("3. Code Analysis");
+            //caFolder.Save();
         }
 
 
@@ -57,13 +60,13 @@ namespace DemoTemplatePack
             {
                 // Display a form to the user. The form collects   
                 // input for the custom message.  
-                inputForm = new UserInputForm();
-                inputForm.ShowDialog();
+                //inputForm = new UserInputForm();
+                //inputForm.ShowDialog();
 
-                customMessage = UserInputForm.CustomMessage;
+                //customMessage = UserInputForm.CustomMessage;
 
                 // Add custom parameters.  
-                replacementsDictionary.Add("passthrough:userInput", customMessage);                
+                //replacementsDictionary.Add("passthrough:userInput", customMessage);                
                 
             }
             catch (Exception ex)
